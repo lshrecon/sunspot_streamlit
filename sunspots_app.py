@@ -9,7 +9,7 @@ def load_data(file_path):
     df = pd.read_csv(file_path)
     if 'YEAR' in df.columns:
         # 소수점 제거 후 정수로 변환
-        df['YEAR_INT'] = df['YEAR'].astype(int)
+        df['YEAR_INT'] = (df['YEAR']/100).astype(int)
         df['DATE'] = pd.to_datetime(df['YEAR_INT'].astype(str), format='%Y')
         df.set_index('DATE', inplace=True)
     return df
